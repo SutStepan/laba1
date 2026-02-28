@@ -1,0 +1,60 @@
+﻿<Window x:Class="laba1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:laba1"
+        mc:Ignorable="d"
+        Title="Крестики-нолики (Версия 1.0)" 
+        Height="400" Width="400" 
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="LightGray">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Grid.Row="0" 
+                   Text="Крестики-нолики" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   HorizontalAlignment="Center" 
+                   Margin="10"/>
+
+        <!-- Игровое поле (таблица 3x3) -->
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Кнопки 3x3 -->
+            <Button x:Name="btn00" Grid.Row="0" Grid.Column="0" Click="Button_Click" FontSize="48"/>
+            <Button x:Name="btn01" Grid.Row="0" Grid.Column="1" Click="Button_Click" FontSize="48"/>
+            <Button x:Name="btn02" Grid.Row="0" Grid.Column="2" Click="Button_Click" FontSize="48"/>
+            <Button x:Name="btn10" Grid.Row="1" Grid.Column="0" Click="Button_Click" FontSize="48"/>
+            <Button x:Name="btn11" Grid.Row="1" Grid.Column="1" Click="Button_Click" FontSize="48"/>
+            <Button x:Name="btn12" Grid.Row="1" Grid.Column="2" Click="Button_Click" FontSize="48"/>
+            <Button x:Name="btn20" Grid.Row="2" Grid.Column="0" Click="Button_Click" FontSize="48"/>
+            <Button x:Name="btn21" Grid.Row="2" Grid.Column="1" Click="Button_Click" FontSize="48"/>
+            <Button x:Name="btn22" Grid.Row="2" Grid.Column="2" Click="Button_Click" FontSize="48"/>
+        </Grid>
+
+        <!-- Статус и новая игра -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <TextBlock x:Name="StatusText" Text="Ход игрока: X" FontSize="16" VerticalAlignment="Center" Margin="5"/>
+            <Button x:Name="NewGameButton" Content="Новая игра" Click="NewGame_Click" Padding="10,5" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</Window>
