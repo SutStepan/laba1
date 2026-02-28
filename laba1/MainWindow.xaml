@@ -5,56 +5,116 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:laba1"
         mc:Ignorable="d"
-        Title="Крестики-нолики (Версия 1.0)" 
-        Height="400" Width="400" 
+        Title="Крестики-нолики (Версия 2.0)" 
+        Height="650" Width="600" 
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Background="LightGray">
     
-    <Grid>
+    <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Заголовок -->
-        <TextBlock Grid.Row="0" 
-                   Text="Крестики-нолики" 
-                   FontSize="24" 
-                   FontWeight="Bold" 
-                   HorizontalAlignment="Center" 
-                   Margin="10"/>
+        <Border Grid.Row="0" Background="DarkSlateBlue" CornerRadius="10" Padding="10" Margin="0,0,0,15">
+            <TextBlock Text="Крестики-нолики" 
+                       FontSize="28" 
+                       FontWeight="Bold" 
+                       Foreground="White" 
+                       HorizontalAlignment="Center"/>
+        </Border>
 
-        <!-- Игровое поле (таблица 3x3) -->
-        <Grid Grid.Row="1" Margin="20">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+        <!-- Счет -->
+        <Grid Grid.Row="1" Margin="0,0,0,15">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
-                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-
-            <!-- Кнопки 3x3 -->
-            <Button x:Name="btn00" Grid.Row="0" Grid.Column="0" Click="Button_Click" FontSize="48"/>
-            <Button x:Name="btn01" Grid.Row="0" Grid.Column="1" Click="Button_Click" FontSize="48"/>
-            <Button x:Name="btn02" Grid.Row="0" Grid.Column="2" Click="Button_Click" FontSize="48"/>
-            <Button x:Name="btn10" Grid.Row="1" Grid.Column="0" Click="Button_Click" FontSize="48"/>
-            <Button x:Name="btn11" Grid.Row="1" Grid.Column="1" Click="Button_Click" FontSize="48"/>
-            <Button x:Name="btn12" Grid.Row="1" Grid.Column="2" Click="Button_Click" FontSize="48"/>
-            <Button x:Name="btn20" Grid.Row="2" Grid.Column="0" Click="Button_Click" FontSize="48"/>
-            <Button x:Name="btn21" Grid.Row="2" Grid.Column="1" Click="Button_Click" FontSize="48"/>
-            <Button x:Name="btn22" Grid.Row="2" Grid.Column="2" Click="Button_Click" FontSize="48"/>
+            
+            <Border Grid.Column="0" Background="LightCoral" CornerRadius="8" Padding="10" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Игрок X" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Foreground="White"/>
+                    <TextBlock x:Name="ScoreXText" Text="0" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" Foreground="White"/>
+                </StackPanel>
+            </Border>
+            
+            <Border Grid.Column="1" Background="LightSkyBlue" CornerRadius="8" Padding="10" Margin="5">
+                <StackPanel>
+                    <TextBlock Text="Игрок O" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Foreground="White"/>
+                    <TextBlock x:Name="ScoreOText" Text="0" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" Foreground="White"/>
+                </StackPanel>
+            </Border>
         </Grid>
 
-        <!-- Статус и новая игра -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-            <TextBlock x:Name="StatusText" Text="Ход игрока: X" FontSize="16" VerticalAlignment="Center" Margin="5"/>
-            <Button x:Name="NewGameButton" Content="Новая игра" Click="NewGame_Click" Padding="10,5" Margin="5"/>
+        <!-- Игровое поле -->
+        <Border Grid.Row="2" Background="White" CornerRadius="15" Padding="15" Margin="0,0,0,15">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Кнопки с стилем -->
+                <Button x:Name="btn00" Grid.Row="0" Grid.Column="0" Click="Button_Click" 
+                        FontSize="48" FontWeight="Bold" Margin="2" BorderBrush="Gray" BorderThickness="1"/>
+                <Button x:Name="btn01" Grid.Row="0" Grid.Column="1" Click="Button_Click" 
+                        FontSize="48" FontWeight="Bold" Margin="2" BorderBrush="Gray" BorderThickness="1"/>
+                <Button x:Name="btn02" Grid.Row="0" Grid.Column="2" Click="Button_Click" 
+                        FontSize="48" FontWeight="Bold" Margin="2" BorderBrush="Gray" BorderThickness="1"/>
+                <Button x:Name="btn10" Grid.Row="1" Grid.Column="0" Click="Button_Click" 
+                        FontSize="48" FontWeight="Bold" Margin="2" BorderBrush="Gray" BorderThickness="1"/>
+                <Button x:Name="btn11" Grid.Row="1" Grid.Column="1" Click="Button_Click" 
+                        FontSize="48" FontWeight="Bold" Margin="2" BorderBrush="Gray" BorderThickness="1"/>
+                <Button x:Name="btn12" Grid.Row="1" Grid.Column="2" Click="Button_Click" 
+                        FontSize="48" FontWeight="Bold" Margin="2" BorderBrush="Gray" BorderThickness="1"/>
+                <Button x:Name="btn20" Grid.Row="2" Grid.Column="0" Click="Button_Click" 
+                        FontSize="48" FontWeight="Bold" Margin="2" BorderBrush="Gray" BorderThickness="1"/>
+                <Button x:Name="btn21" Grid.Row="2" Grid.Column="1" Click="Button_Click" 
+                        FontSize="48" FontWeight="Bold" Margin="2" BorderBrush="Gray" BorderThickness="1"/>
+                <Button x:Name="btn22" Grid.Row="2" Grid.Column="2" Click="Button_Click" 
+                        FontSize="48" FontWeight="Bold" Margin="2" BorderBrush="Gray" BorderThickness="1"/>
+            </Grid>
+        </Border>
+
+        <!-- Кастомизация -->
+        <GroupBox Grid.Row="3" Header="Настройки символов" Margin="0,0,0,10" Padding="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="X:" FontWeight="Bold" FontSize="16" Foreground="Red" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                    <TextBox x:Name="CustomXSymbol" Text="X" MaxLength="1" Width="40" FontSize="16" HorizontalAlignment="Center"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="O:" FontWeight="Bold" FontSize="16" Foreground="Blue" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                    <TextBox x:Name="CustomOSymbol" Text="O" MaxLength="1" Width="40" FontSize="16" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+        <!-- Кнопки управления -->
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5">
+            <Button x:Name="ApplyCustomizationButton" Content="Применить" Click="ApplyCustomization_Click" 
+                    Padding="15,8" Margin="5" Background="LightGreen" BorderThickness="0" FontWeight="Bold"/>
+            <Button x:Name="NewGameButton" Content="Новая игра" Click="NewGame_Click" 
+                    Padding="15,8" Margin="5" Background="LightBlue" BorderThickness="0" FontWeight="Bold"/>
+            <Button x:Name="ResetScoreButton" Content="Сброс счета" Click="ResetScore_Click" 
+                    Padding="15,8" Margin="5" Background="LightYellow" BorderThickness="0" FontWeight="Bold"/>
         </StackPanel>
     </Grid>
 </Window>
